@@ -19,6 +19,7 @@ app.add_middleware(
 
 # Carrega o modelo YOLO
 model = YOLO("yolo/best.pt")
+model.to("cpu")
 
 @app.post("/contar_dentes")
 async def contar_dentes(file: UploadFile = File(...)):
