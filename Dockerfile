@@ -1,6 +1,6 @@
 FROM python:3.10-slim
 
-# Instalar dependências do sistema necessárias para o OpenCV headless e Ultralytics
+# Dependências do sistema necessárias para OpenCV headless + Ultralytics
 RUN apt-get update && apt-get install -y \
     libgl1 \
     libglib2.0-0 \
@@ -20,4 +20,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Comando para rodar FastAPI no Vercel
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port $PORT"]
