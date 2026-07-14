@@ -18,7 +18,7 @@ app.add_middleware(
 )
 
 # Carrega o modelo YOLO
-model = YOLO("backend/yolo/best.pt")
+model = YOLO("yolo/best.pt")
 
 @app.post("/contar_dentes")
 async def contar_dentes(file: UploadFile = File(...)):
